@@ -49,9 +49,7 @@ class RiseDatabase:
                 for chunk in response.iter_content(chunk_size=8192):
                     file.write(chunk)
                     bar.update(len(chunk))
-
             print(f"\nDataset downloaded successfully: {zip_file_path}")
-
             # Unzip the file and delete the .zip file
             self._extract_and_cleanup(zip_file_path, save_path)
         else:
@@ -70,7 +68,6 @@ class RiseDatabase:
         print(f"Extracting {zip_file_path}...")
         with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
             zip_ref.extractall(extract_to)
-
 
         # Delete the .zip file
         os.remove(zip_file_path)
